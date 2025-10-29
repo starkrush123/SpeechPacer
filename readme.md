@@ -17,7 +17,7 @@ Speech Pacer activates as soon as it is installed. By default, it speaks the sam
 
 ### Dialog options
 - **Enable structured focus announcements:** Master switch that enables or disables Speech Pacer. Turning it off restores NVDA's default speech without uninstalling the add-on.
-- **Allow the add-on to translate control and state names:** Uses Speech Pacer's internal dictionary instead of NVDA's built-in labels. This is most noticeable in Portuguese localisations.
+- **Allow the add-on to translate control and state names:** Uses Speech Pacer's internal dictionary instead of NVDA's built-in labels.
 - **Announce shortcut keys:** Controls whether application-defined shortcut keys are spoken.
 - **Message extension:** Short, Medium, Long, or Custom presets that determine how much context you hear.
 - **Pause between items (milliseconds):** Sets the synthesizer break duration inserted between each piece of information.
