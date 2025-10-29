@@ -9,7 +9,7 @@ def onInstall():
 		if addon.name == "Pausing Information":
 			result = gui.messageBox(
 				# Translators: Displays a message to the user asking if they want to uninstall the previous version of the add-on
-				_("Due to a technical error, the internal name of the previous version of this add-on was incorrect, which makes it incompatible with this new version. For the add-on to work properly, this version must be uninstalled. Do you want to uninstall the previous version now?"),
+				_("An older Pausing Information build is still installed. Speech Pacer replaces it and cannot run until the previous package is removed. Would you like to uninstall the legacy version now?"),
 				# Translators: question title
 				_("Previous version found"),
 				wx.YES_NO|wx.ICON_QUESTION, gui.mainFrame)
