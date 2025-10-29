@@ -1,5 +1,5 @@
 ## Overview
-Speech Pacer is the evolution of the original Pausing Information NVDA add-on. It keeps the same goal—making focus changes easier to follow—while replacing punctuation hacks with true synthesizer-managed pauses, adding richer configuration, and keeping braille and Speech History output intact. 
+Speech Pacer is the evolution of the original [Pausing Information NVDA add-on](https://github.com/wendrillaksenow/pausingInformation). It keeps the same goal—making focus changes easier to follow—while replacing punctuation hacks with true synthesizer-managed pauses, adding richer configuration, and keeping braille and Speech History output intact. 
 
 ## Highlights
 - Structured focus speech with synthesizer breaks between the name, type, state, shortcut, value, table position, and description of the focused control.
