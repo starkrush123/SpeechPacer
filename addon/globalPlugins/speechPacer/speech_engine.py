@@ -118,7 +118,15 @@ class SpeechPacerSpeechEngine:
 		if obj.role in [controlTypes.Role.DOCUMENT, controlTypes.Role.EDITABLETEXT, controlTypes.Role.STATICTEXT, controlTypes.Role.TERMINAL]:
 			self.add_document_content(obj, description_parts)
 
-		if obj.role in [controlTypes.Role.LISTITEM, controlTypes.Role.PROGRESSBAR] and obj.value:
+		if obj.role in [
+			controlTypes.Role.BUTTON,
+			controlTypes.Role.TOGGLEBUTTON,
+			controlTypes.Role.CHECKBOX,
+			controlTypes.Role.RADIOBUTTON,
+			controlTypes.Role.SWITCH,
+			controlTypes.Role.LISTITEM,
+			controlTypes.Role.PROGRESSBAR,
+		] and obj.value:
 			self._append_if_missing(description_parts, obj.value)
 
 		if obj.role in [controlTypes.Role.DATAITEM, controlTypes.Role.TABLECELL] and obj.value:
@@ -301,12 +309,13 @@ class SpeechPacerSpeechEngine:
 
 	def get_relevant_negative_state(self, obj):
 		if nvda_config.conf[CONFIG_SECTION]["useCustomTranslations"]:
-			if obj.role in [controlTypes.Role.CHECKBOX, controlTypes.Role.CHECKMENUITEM]:
+			if obj.role in [controlTypes.Role.CHECKBOX, controlTypes.Role.CHECKMENUITEM, controlTypes.Role.RADIOBUTTON, controlTypes.Role.RADIOMENUITEM]:
 				return NEGATIVE_STATE_NAMES[controlTypes.State.CHECKED] if controlTypes.State.CHECKED not in obj.states else None
-			if obj.role in [controlTypes.Role.RADIOBUTTON, controlTypes.Role.RADIOMENUITEM]:
-				return NEGATIVE_STATE_NAMES[controlTypes.State.CHECKED] if controlTypes.State.CHECKED not in obj.states else None
-			if obj.role == controlTypes.Role.TOGGLEBUTTON:
-				return NEGATIVE_STATE_NAMES[controlTypes.State.PRESSED] if controlTypes.State.PRESSED not in obj.states else None
+			if obj.role in [controlTypes.Role.TOGGLEBUTTON, controlTypes.Role.BUTTON]:
+				if controlTypes.State.PRESSED not in obj.states and (obj.role == controlTypes.Role.TOGGLEBUTTON or controlTypes.State.CHECKABLE in obj.states):
+					return NEGATIVE_STATE_NAMES[controlTypes.State.PRESSED]
+				if controlTypes.State.CHECKED not in obj.states and controlTypes.State.CHECKABLE in obj.states:
+					return NEGATIVE_STATE_NAMES[controlTypes.State.CHECKED]
 			if obj.role == controlTypes.Role.SWITCH:
 				return NEGATIVE_STATE_NAMES[controlTypes.State.ON] if controlTypes.State.ON not in obj.states else None
 			if obj.role in [controlTypes.Role.LISTITEM, controlTypes.Role.TAB, controlTypes.Role.TREEVIEWITEM]:

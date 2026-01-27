@@ -25,7 +25,7 @@ addon_info = {
 	# Translators: Long description to be shown for this add-on on add-on information from add-ons manager
 	"addon_description": _("""Formats focus announcements with synthesizer-managed pauses and lets you decide which control details are spoken."""),
 	# version
-	"addon_version": "1.6",
+	"addon_version": "1.7",
 	# Author(s)
 	"addon_author": "mrido1",
 	# URL for the add-on documentation support
